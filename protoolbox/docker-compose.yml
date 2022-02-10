@@ -4,7 +4,7 @@ services:
     build: .
     restart: always
     entrypoint: >
-      jupyter-lab
+      jupyter lab
       --allow-root
       --ip=0.0.0.0
       --port=8080
