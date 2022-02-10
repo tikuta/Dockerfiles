@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  protoolbox:
+    build: .
+    restart: always
+    entrypoint: >
+      jupyter-lab
+      --allow-root
+      --ip=0.0.0.0
+      --port=8080
+      --no-browser
+      --NotebookApp.token=''
+      --notebook-dir=/content
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data/1/ikuta:/content
+    environment:
+      - "NVIDIA_VISIBLE_DEVICES=0"
+      - "NVIDIA_DRIVER_CAPABILITIES=all"
+    deploy:
+      resources:
+        reservations:
+           devices:
+            - driver: nvidia
+              capabilities: [gpu]
