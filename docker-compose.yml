@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   protoolbox:
-    build: .
+    image: tikuta/protoolbox:latest
     restart: always
     entrypoint: >
       jupyter lab
@@ -16,7 +16,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /data/1/ikuta:/content
+      - .:/content
     environment:
       - "NVIDIA_VISIBLE_DEVICES=0"
       - "NVIDIA_DRIVER_CAPABILITIES=all"
